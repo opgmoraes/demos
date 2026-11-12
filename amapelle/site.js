@@ -153,10 +153,7 @@ function setupTestimonials() {
   const track = select('.quotes', carousel);
   const slides = all('blockquote', track);
   const dots = all('.dots button', carousel);
-  const toggle = select('.auto', carousel);
   let current = 0;
-  let paused = reducedMotion.matches;
-  let inView = false;
   let drag = null;
   const offsets = () => slides.map(slide => slide.offsetLeft - slides[0].offsetLeft);
   function selectSlide(index, smooth = !reducedMotion.matches) {
@@ -167,18 +164,6 @@ function setupTestimonials() {
   function syncDots() {
     dots.forEach((dot, index) => dot.setAttribute('aria-current', index === current));
   }
-  function syncToggle() {
-    toggle.textContent = paused ? 'Ativar rotação' : 'Pausar rotação';
-  }
-  syncToggle();
-  reducedMotion.addEventListener('change', event => {
-    paused = event.matches;
-    syncToggle();
-  });
-  toggle.addEventListener('click', () => {
-    paused = !paused;
-    syncToggle();
-  });
   dots.forEach((dot, index) => dot.addEventListener('click', () => selectSlide(index)));
   select('.previous', carousel).addEventListener('click', () => selectSlide(current - 1));
   select('.next', carousel).addEventListener('click', () => selectSlide(current + 1));
@@ -207,12 +192,6 @@ function setupTestimonials() {
     track.classList.remove('dragging');
     selectSlide(distances.indexOf(Math.min(...distances)));
   });
-  new IntersectionObserver(([entry]) => { inView = entry.isIntersecting; }).observe(carousel);
-  setInterval(() => {
-    if (!paused && inView && !document.hidden && !carousel.matches(':hover,:focus-within') && !drag) {
-      selectSlide(current + 1);
-    }
-  }, 6500);
 }
 
 function setupMedia() {
@@ -235,16 +214,7 @@ function setupMedia() {
       all('video').filter(other => other !== video).forEach(other => other.pause());
     });
   });
-  const trigger = select('[data-map]');
-  trigger.hidden = false;
-  trigger.addEventListener('click', () => {
-    const map = document.createElement('iframe');
-    map.title = 'Mapa da Clínica Amapelle em Luziânia';
-    map.referrerPolicy = 'strict-origin-when-cross-origin';
-    map.src = 'https://maps.google.com/maps?q=-16.2502596,-47.9504578&z=17&output=embed';
-    trigger.replaceWith(map);
-    map.focus();
-  });
+
 }
 
 if (select('.header')) {
