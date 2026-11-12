@@ -241,3 +241,53 @@ details[open] .answer {animation:answer-in 260ms var(--ease) both}
 .bio nav a:first-child {background:var(--sage);color:var(--ink)}
 .bio nav a:hover {transform:translateY(-3px);background:var(--light)}
 .bio a:focus-visible {outline-color:var(--white)}
+
+@media (max-width:700px) {
+  .header {padding-block:10px}
+  .nav-shell {min-height:60px;padding:5px 8px 5px 14px}
+  .menu-toggle {min-height:44px;padding-inline:13px;background:var(--green);color:var(--white)}
+  .hero {
+    margin-top:81px;border-radius:24px;
+    background:radial-gradient(ellipse at 20% 11%,var(--white),transparent 57%),
+      radial-gradient(ellipse at 74% 72%,var(--light),transparent 51%),
+      linear-gradient(150deg,var(--mist) 18%,#bdd5bf 100%);
+  }
+  .hero-copy {padding:28px clamp(18px,6vw,35px) 0}
+  .hero-location {margin-bottom:12px;font-size:.8rem}
+  .hero h1 {font-size:clamp(2.85rem,12vw,4.65rem);line-height:.96}
+  .hero-copy>p:not(.hero-location) {margin-top:14px;font-size:.94rem;line-height:1.5}
+  .hero .actions {margin-top:16px;gap:6px 14px}
+  .hero .text-link {min-height:44px;font-size:.86rem}
+  .hero-art {min-height:clamp(276px,78vw,425px);isolation:isolate}
+  .hero-art>span {
+    inset:0 18% 0 -5%;font-size:clamp(275px,87vw,500px);
+    opacity:.25;transform:translate(-14%,0) rotate(-17deg);
+  }
+  .hero-art::before {
+    inset:24% -14% 11% -14%;border-color:#12483d55;
+    box-shadow:0 0 30px #fffdf965;transform:rotate(-23deg);
+  }
+  .hero-art img {width:100%;height:108%;object-position:68% bottom}
+  .benefits {padding:13px 0 14px;gap:0}
+  .benefits span {padding-inline:7px;align-items:flex-start}
+  .benefits span + span {border-left:1px solid var(--line)}
+  .benefits svg {margin-top:2px}
+  .section {padding-block:54px}
+  .section-head {margin-bottom:20px}
+  .service-band .section-head {margin-bottom:18px}
+  .group-intro {font-size:.94rem}
+  .treatment {padding:17px 18px 13px}
+  .treatment + .treatment {border-top:1px solid var(--line)}
+  .treatment p {line-height:1.5;font-size:.94rem}
+  .gallery {gap:7px}
+  .gallery-item {font-size:.74rem;line-height:1.3}
+  .gallery-item img {aspect-ratio:3/4;object-fit:cover}
+  .video-section .videos {gap:8px}
+  .footer-grid {gap:17px}
+}
+
+@media (max-width:360px) {
+  .hero h1 {font-size:2.75rem}
+  .hero-art {min-height:250px}
+  .benefits span {font-size:.72rem;padding-inline:5px}
+}
