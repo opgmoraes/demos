@@ -484,3 +484,51 @@ footer { border-top: 1px solid var(--line); }
   .location-info { border-radius: 12px 12px 0 0; }
   .map-section .location iframe { min-height: 300px; border-radius: 0 0 12px 12px; }
 }
+
+/* Layout editorial da página principal */
+.site-header { border: 0; background: transparent; padding-inline: 0; }
+.hero { border-radius: 12px; }
+.hero-copy { padding-left: clamp(28px, 6vw, 78px); }
+.hero-actions { column-gap: 18px; }
+.services-band { background: var(--paper); }
+.services-content > h2 { text-align: left; }
+#tratamentos .columns {
+  gap: 0;
+  border-block: 1px solid #a9b9ac;
+}
+#tratamentos article {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+#tratamentos article + article { border-left: 1px solid #a9b9ac; }
+#tratamentos .treatment-copy { padding: 22px clamp(16px, 2.4vw, 30px) 24px; }
+#tratamentos article:first-child .treatment-copy { padding-left: 0; }
+#tratamentos .treatment-copy li { border: 0; padding: 3px 0; }
+.results { background: #e2ece1; }
+.video-band {
+  color: var(--white);
+  background: radial-gradient(ellipse at 50% 0%, #386555, transparent 65%), #163e34;
+}
+.video-band .wrap { display: block; }
+.video-band h2 { text-align: center; }
+.video-band .videos {
+  grid-template-columns: repeat(2, minmax(0, 245px));
+  justify-content: center;
+  gap: clamp(12px, 3vw, 30px);
+  margin-top: 26px;
+}
+.video-band video {
+  border: 1px solid #afcbb666;
+  border-radius: 12px;
+}
+.clinic-section .space { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.clinic-section .space img { aspect-ratio: 3/4; }
+.map-section { background: #f1e4d9; }
+@media (max-width: 700px) {
+  .site-header { padding-inline: 0; }
+  .hero-copy { padding-left: 22px; }
+  #tratamentos article + article { border-left: 0; border-top: 1px solid #a9b9ac; }
+  #tratamentos .treatment-copy { padding-inline: 0; }
+  .clinic-section .space { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
